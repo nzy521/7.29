@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        /* .two{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-origin: left top;
+            transition: transform 2s ease;
+            transform-style: preserve-3d;
+        } */
+        
+        /* .three{
+            width: 200px;
+            height: 200px;
+            background: green;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .four{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-origin: left top;
+            transition: transform 2s ease;
+            transform-style: preserve-3d;
+            transform:rotateY(90deg)
+        } */
+       
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+    <!-- <div class="three"></div>
+    <div class="four"></div> -->
+    <script>
+        var one=document.querySelector(".one");
+        var two=document.querySelector(".two");
+        one.onclock=function(){
+            one.style.transform="rotateY(60deg)";
+        }
+    </script>
+</body>
+</html>

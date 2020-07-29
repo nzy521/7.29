@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scene{
+            perspective: 800px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;           
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+            transform-origin: left top;
+            transition: transform 2s ease;
+            transform-style: preserve-3d;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background: green;
+            transform-origin: left;
+            transform:rotateY(-30deg);
+        }
+        .box:hover{
+            transform:rotateX(50deg)
+        }
+    </style>
+</head>
+<body>
+    <!-- <canvas>
+
+    </canvas>
+    <script>
+        var canvas=document.querySelector("canvas");
+        var cobj=canvas.getContext("2d");
+        cobj.fillRect(0,0,100,100);
+        cobj.fillStyle("red");
+
+    </script> -->
+
+
+    <div class="scene">
+        <div class="box">
+            <div class="inner"></div>
+        </div>
+    </div>
+</body>
+</html>

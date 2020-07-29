@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .clock-box{
+            width: 260px;
+            height: 260px;
+            box-shadow: 0 0 20px #000;
+            border-radius: 10px ;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(#ccc,#000);
+        
+        }
+        .clock{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #000;
+            margin: auto;
+            position:absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            box-shadow: 0 0 5px #000 inset;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-box">
+        <div class="clock"></div>
+    </div>
+</body>
+
+<script>
+    var clock=document.querySelector(".clock");
+    var clockw=clock.offsetWidth;
+    var clockh=clock.offsetHeight;
+    function createMrak(){
+        for(var i=0;i<60;i++){
+            var div=document.createElement("div");
+
+            var width,height;
+            if(i%5==0){
+                width=4;
+                height=8;
+            }else{
+                width=2;
+                height=6;
+            }
+            div.style.width=width+"px";
+            div.style.height=height+"px"
+            div.style.background="#000"
+            div.style.position="absolute"
+            div.style.top=0+"px";
+            div.style.left=(clockw-width)/2+"px";
+            div.style.transformOrigin="center 100px";
+            div.style.transform="rotate("+i*6+"deg)";
+            clock.appendChild(div);
+        }
+    }
+    function createPointer(){
+        var hours=document.createElement("div");
+        hours.style.position="absolute";
+        hours.style.width="8px"
+        hours.style.height="40px"
+        hours.style.left=(clockw-8)/2+"px";
+        hours.style.bottom="50%"
+        hours.style.background="#000";
+        hours.style.transformOrigin="center bottom"
+        clock.appendChild(hours)
+
+        var min=document.createElement("div");
+        min.style.position="absolute";
+        min.style.width="6px"
+        min.style.height="60px"
+        min.style.left=(clockw-6)/2+"px";
+        min.style.bottom="50%"
+        min.style.background="#000";
+        min.style.transformOrigin="center bottom"
+        clock.appendChild(min)
+
+        var sec=document.createElement("div");
+        sec.style.position="absolute";
+        sec.style.width="4px"
+        sec.style.height="80px"
+        sec.style.left=(clockw-4)/2+"px";
+        sec.style.bottom="50%"
+        sec.style.background="#000";
+        sec.style.transformOrigin="center bottom"
+        clock.appendChild(sec);
+        return[hours,min,sec];
+
+    }
+    createMrak();
+    var pointers=createPointer();
+    function run(){
+    var now=new Date();
+    var hours=now.getHours();
+    var min=now.getMinutes();
+    var sec=now.getSeconds();
+    pointers[0].style.transform="rotate("+(30*hours+6*min/12)+"deg)"
+    pointers[1].style.transform="rotate("+6*min+"deg)"
+    pointers[2].style.transform="rotate("+6*sec+"deg)"   
+    }
+    run();
+    setInterval(run,1000);
+   
+   
+</script>
+</html>

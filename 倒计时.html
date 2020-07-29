@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    倒计时:<span></span>天
+    <span></span>小时
+    <span></span>分钟
+    <span></span>秒
+    <script>
+        function settime(opts) {
+
+            var end = new Date();
+            end.setFullYear(opts.end[0]);
+            end.setMonth(opts.end[1]);
+            end.setDate(opts.end[2]);
+            end.setHours(opts.end[3]);
+            end.setMinutes(opts.end[4]);
+            end.setSeconds(opts.end[5]);
+            var endTime = end.getTime() / 1000;
+            var t=setInterval(run, 1000)
+            run();
+            function run() {
+
+                var current = new Date();
+                var currentTime = current.getTime() / 1000;
+                
+                var diff = endTime - currentTime;
+                if(diff<0){
+                    console.error("时间不对");
+                    clearInterval(t);
+                    return ;
+                }
+                var day = parseInt(diff / (60 * 60 * 24));
+                diff %= (60 * 60 * 24);
+                var hours = parseInt(diff / (60 * 60));
+                diff %= 60 * 60;
+                var min = parseInt(diff / 60);
+                diff %= 60;
+                var sed = parseInt(diff);
+
+                timeEle[0].innerHTML = day;
+
+                timeEle[1].innerHTML = hours;
+                timeEle[2].innerHTML = min;
+                timeEle[3].innerHTML = sed;
+
+            }
+          
+            
+        }
+
+        var timeEle = document.querySelectorAll("span");
+        settime({
+            end: [2020, 4, 10, 10, 10, 10],
+            ele: [timeEle[0], timeEle[1], timeEle[2], timeEle[3]]
+        })
+    </script>
+</body>
+
+</html>
